@@ -10,11 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: '16.x'
+
     - name: Checkout Repository
       uses: actions/checkout@v2
 
     - name: Build and Deploy to Azure
-      uses: Azure/static-web-apps-deploy@v1  # Update to a more recent version
+      uses: Azure/static-web-apps-deploy@v1
       with:
         azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
         repo_token: ${{ secrets.GITHUB_TOKEN }}
